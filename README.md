@@ -1,2 +1,2 @@
 # JavaProjects
-For Java projects 3rd course
+Табала Матвій, третій курс, друга група "Комп'ютерна математика 2"
