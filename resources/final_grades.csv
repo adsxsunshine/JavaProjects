@@ -1,0 +1,83 @@
+Student Grades:
+StudentId, FirstName, LastName, CourseId, GroupId, AverageGrade
+1, Matvii, Tabala, 3, 1, 6.0
+2, Karem, Mashala, 1, 1, 8.0
+3, Sergiy, Horbach, 5, 2, 9.0
+
+-------------------------------------------------
+
+Group Performances:
+GroupId, CourseId, AverageGrade
+1, 1, 8.0
+1, 3, 6.0
+2, 5, 9.0
+
+-------------------------------------------------
+
+Course Performances:
+CourseId, AverageGrade
+1, 8.0
+3, 6.0
+5, 9.0
+
+-------------------------------------------------
+
+Teacher Performances:
+Teacher's full name: Ivan Andriyovych
+Student's full name, Student's course, Student's group, Student's average grade
+Sergiy Horbach, 5, 2, 9.0
+
+Group Performances for Course Mathematical Analysis:
+GroupId, CourseId, AverageGrade
+2, 5, 9.0
+
+Course Performances:
+CourseId, AverageGrade
+5, 9.0
+
+-------------------------------------------------
+
+Teacher's full name: Maria Ivanivna
+Student's full name, Student's course, Student's group, Student's average grade
+Matvii Tabala, 3, 1, 6.0
+
+Group Performances for Course Probability Theory:
+GroupId, CourseId, AverageGrade
+1, 3, 6.0
+
+Course Performances:
+CourseId, AverageGrade
+3, 6.0
+
+-------------------------------------------------
+
+Teacher's full name: Maksym Vitaliyovych
+Student's full name, Student's course, Student's group, Student's average grade
+
+Group Performances for Course Discrete Mathematics:
+GroupId, CourseId, AverageGrade
+
+Course Performances:
+CourseId, AverageGrade
+
+-------------------------------------------------
+
+Teacher's full name: Serhiy Vasylovych
+Student's full name, Student's course, Student's group, Student's average grade
+Karem Mashala, 1, 1, 8.0
+
+Group Performances for Course Programming:
+GroupId, CourseId, AverageGrade
+1, 1, 8.0
+
+Course Performances:
+CourseId, AverageGrade
+1, 8.0
+
+-------------------------------------------------
+
+All Grades:
+StudentId, TeacherId, Grade
+1, 2, 6.0
+2, 4, 8.0
+3, 1, 9.0

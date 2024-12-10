@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <title>Документація: StudentManagementSystem</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        h1, h2, h3, h4 { color: #2E8B57; }
+        code { background-color: #f9f9f9; padding: 2px 4px; border-radius: 4px; }
+        pre { background-color: #f9f9f9; padding: 10px; border-radius: 4px; overflow-x: auto; }
+        table { width: 100%; border-collapse: collapse; margin-bottom: 20px; }
+        th, td { text-align: left; padding: 8px; border-bottom: 1px solid #ddd; }
+        .code-block { background-color: #f9f9f9; padding: 10px; border-radius: 4px; overflow-x: auto; }
+        a:link {color: blue; background-color: transparent; text-decoration: none; }
+        a:visited {color: blue; background-color: transparent; text-decoration: none; }
+    </style>
+</head>
+<body>
+
+<h1>Документація: StudentManagementSystem</h1>
+
+<p>
+    Даний проект призначений для обліку студентів, їх персональних даних та успішності.<br/>
+    Система дозволяє визначати успішність індивідуально для кожного студента, групи, курсу та по відношенню до викладача.<br/>
+    Всі дані зберігаються в SQLite базі даних, вони можуть редагуватись, імпортуватися та експортуватися у формат CSV.
+</p>
+
+<h2>Зміст</h2>
+<ul>
+    <li><a href="#main">Клас StudentManagementSystem</a></li>
+    <li><a href="#teacher">Клас Teacher</a></li>
+    <li><a href="#student">Клас Student</a></li>
+    <li><a href="#grades">Клас Grades</a></li>
+    <li><a href="#database-dao">Клас DatabaseDAO</a></li>
+    <li><a href="#methods">Методи</a></li>
+</ul>
+
+<h2 id="main">Клас StudentManagementSystem</h2>
+<p>
+    Основний клас програми, який містить метод <code>main</code> і відповідає за запуск програми, взаємодію з користувачем та виклик необхідних методів для обробки даних.
+</p>
+
+<h3>Метод <code>public static void main(String[] args)</code></h3>
+<p>
+    Точка входу програми. Виконує наступні дії:
+</p>
+<ul>
+    <li>Перевіряє наявність файлу <code>final_grades.csv</code> і створює його при необхідності.</li>
+    <li>Підключається до бази даних SQLite.</li>
+    <li>Створює необхідні таблиці в БД.</li>
+    <li>Додає викладачів до бази даних.</li>
+    <li>Завантажує дані студентів з CSV файлу.</li>
+    <li>Відображає меню для користувача та обробляє вибір.</li>
+</ul>
+
+<h2 id="teacher">Клас Teacher</h2>
+<p>
+    Клас представляє викладача з наступними полями:
+</p>
+<ul>
+    <li><code>int id</code>: Унікальний ідентифікатор викладача.</li>
+    <li><code>String name</code>: Ім'я викладача.</li>
+    <li><code>String subject</code>: Предмет, який викладає викладач.</li>
+</ul>
+
+<h3>Конструктор <code>public Teacher(int id, String name, String subject)</code></h3>
+<p>Створює новий об'єкт <code>Teacher</code> з заданими параметрами.</p>
+
+<h3>Методи доступу</h3>
+<ul>
+    <li><code>public int getId()</code>: Повертає ID викладача.</li>
+    <li><code>public String getName()</code>: Повертає ім'я викладача.</li>
+    <li><code>public String getSubject()</code>: Повертає предмет викладача.</li>
+</ul>
+
+<h2 id="student">Клас Student</h2>
+<p>
+    Клас представляє студента з наступними полями:
+</p>
+<ul>
+    <li><code>int id</code>: Унікальний ідентифікатор студента.</li>
+    <li><code>String firstName</code>: Ім'я студента.</li>
+    <li><code>String lastName</code>: Прізвище студента.</li>
+    <li><code>int groupId</code>: Номер групи студента.</li>
+    <li><code>int courseId</code>: Номер курсу студента.</li>
+</ul>
+
+<h3>Конструктор <code>public Student(int id, String firstName, String lastName, int groupId, int courseId)</code></h3>
+<p>Створює новий об'єкт <code>Student</code> з заданими параметрами.</p>
+
+<h3>Методи доступу</h3>
+<ul>
+    <li><code>public int getId()</code>: Повертає ID студента.</li>
+    <li><code>public String getFirstName()</code>: Повертає ім'я студента.</li>
+    <li><code>public String getLastName()</code>: Повертає прізвище студента.</li>
+    <li><code>public int getGroupId()</code>: Повертає номер групи студента.</li>
+    <li><code>public int getCourseId()</code>: Повертає номер курсу студента.</li>
+</ul>
+
+<h2 id="grades">Клас Grades</h2>
+<p>
+    Клас представляє оцінку студента з наступними полями:
+</p>
+<ul>
+    <li><code>int studentId</code>: ID студента.</li>
+    <li><code>int teacherId</code>: ID викладача.</li>
+    <li><code>double grade</code>: Оцінка студента.</li>
+</ul>
+
+<h3>Конструктор <code>public Grades(int studentId, int teacherId, double grade)</code></h3>
+<p>Створює новий об'єкт <code>Grades</code> з заданими параметрами.</p>
+
+<h3>Методи доступу</h3>
+<ul>
+    <li><code>public int getStudentId()</code>: Повертає ID студента.</li>
+    <li><code>public int getTeacherId()</code>: Повертає ID викладача.</li>
+    <li><code>public double getGrade()</code>: Повертає оцінку студента.</li>
+</ul>
+
+<h2 id="database-dao">Клас DatabaseDAO</h2>
+<p>
+    Клас відповідає за взаємодію з базою даних. Містить методи для створення таблиць, додавання та отримання викладачів, студентів та оцінок, а також оновлення даних.
+</p>
+
+<h3>Конструктор <code>public DatabaseDAO(Connection connection)</code></h3>
+<p>Приймає об'єкт <code>Connection</code> для взаємодії з базою даних.</p>
+
+<h3>Внутрішній клас <code>public static class StudentGrade</code></h3>
+<p>
+    Клас для зберігання інформації про студентів та їх оцінки від певного викладача.
+</p>
+<ul>
+    <li><code>String firstName</code>: Ім'я студента.</li>
+    <li><code>String lastName</code>: Прізвище студента.</li>
+    <li><code>int courseId</code>: Номер курсу студента.</li>
+    <li><code>int groupId</code>: Номер групи студента.</li>
+    <li><code>double averageGrade</code>: Середня оцінка студента.</li>
+</ul>
+
+<h2 id="methods">Методи</h2>
+
+<h2>Основні (глобальні) методи</h2>
+
+<h3><code>public static void loadAllDataFromCSV(DatabaseDAO databaseDAO, String fileName)</code></h3>
+<p>Завантажує всі дані з CSV файлу, очищує таблиці в базі даних та заповнює їх новими даними.</p>
+
+<h3><code>public static void saveDataToCSV(DatabaseDAO databaseDAO)</code></h3>
+<p>Зберігає всі дані з бази даних у CSV файл з відповідним форматуванням та розрахунком середніх оцінок.</p>
+
+<h2>Другорядні методи</h2>
+
+<h3><code>public static List&lt;Teacher&gt; createTeachers()</code></h3>
+<p>Створює та повертає список викладачів з заданими даними.</p>
+
+<h3><code>public static void addTeachersToDatabase(DatabaseDAO databaseDAO, List&lt;Teacher&gt; teachers) throws SQLException</code></h3>
+<p>Додає список викладачів до бази даних.</p>
+
+<h3><code>public void createTables() throws SQLException</code></h3>
+<p>Створює таблиці <code>Students</code>, <code>Teachers</code> та <code>Grades</code> у базі даних, якщо вони не існують.</p>
+
+<h3><code>public void addTeacher(Teacher teacher) throws SQLException</code></h3>
+<p>Додає викладача до таблиці <code>Teachers</code>.</p>
+
+<h3><code>public List&lt;Teacher&gt; getAllTeachers() throws SQLException</code></h3>
+<p>Повертає список всіх викладачів з таблиці <code>Teachers</code>.</p>
+
+<h3><code>public void addStudent(Student student) throws SQLException</code></h3>
+<p>Додає студента до таблиці <code>Students</code>.</p>
+
+<h3><code>public void addGrade(int studentId, int teacherId, double grade) throws SQLException</code></h3>
+<p>Додає оцінку студенту від викладача до таблиці <code>Grades</code>.</p>
+
+<h3><code>public Student getStudentByNameAndGroup(String firstName, String lastName, int groupId, int courseId) throws SQLException</code></h3>
+<p>Повертає студента за його ім'ям, прізвищем, номером групи та курсу.</p>
+
+<h3><code>public Student getStudentById(int studentId) throws SQLException</code></h3>
+<p>Повертає студента за його ID.</p>
+
+<h3><code>public List&lt;Student&gt; getAllStudents() throws SQLException</code></h3>
+<p>Повертає список всіх студентів з таблиці <code>Students</code>.</p>
+
+<h3><code>public double getAverageGradeForStudent(int studentId) throws SQLException</code></h3>
+<p>Обчислює та повертає середню оцінку для студента за його ID.</p>
+
+<h3><code>public List&lt;StudentGrade&gt; getStudentsByTeacher(int teacherId) throws SQLException</code></h3>
+<p>Повертає список студентів та їх середніх оцінок від певного викладача.</p>
+
+<h3><code>public void updateStudentFirstName(int studentId, String newFirstName) throws SQLException</code></h3>
+<p>Оновлює ім'я студента за його ID.</p>
+
+<h3><code>public void updateStudentLastName(int studentId, String newLastName) throws SQLException</code></h3>
+<p>Оновлює прізвище студента за його ID.</p>
+
+<h3><code>public void updateStudentCourseId(int studentId, int newCourseId) throws SQLException</code></h3>
+<p>Оновлює номер курсу студента за його ID.</p>
+
+<h3><code>public void updateStudentGroupId(int studentId, int newGroupId) throws SQLException</code></h3>
+<p>Оновлює номер групи студента за його ID.</p>
+
+<h3><code>public void updateGrade(int studentId, double newGrade) throws SQLException</code></h3>
+<p>Оновлює оцінку студента за його ID.</p>
+
+<h3><code>public void updateTeacherForStudent(int studentId, int newTeacherId) throws SQLException</code></h3>
+<p>Оновлює ID викладача для студента.</p>
+
+<h3><code>public List&lt;Grades&gt; getAllGrades() throws SQLException</code></h3>
+<p>Повертає список всіх оцінок з таблиці <code>Grades</code>.</p>
+
+</body>
+</html>
